@@ -48,15 +48,23 @@ export const App = () => {
         todoText={todoText}
         onChange={onChangeTodoText}
         onClick={onClickAdd}
+        disabled={incompleteTodos.length >= 5}
       />
 
+      {incompleteTodos.length >= 5 && (
+        <p style={{ color: "red" }}>登録できるタスクは５個までです。</p>
+      )}
       <InconmpleteTodos
         incompleteTodos={incompleteTodos}
         onClickComplete={onClickComplete}
         onClickDelete={onClickDelete}
       />
 
-      <CompleteTodos completeTodos={completeTodos} onClick={onClickReturn} />
+      <CompleteTodos
+        completeTodos={completeTodos}
+        onClick={onClickReturn}
+        disabled={incompleteTodos.length >= 5}
+      />
     </>
   );
 };
